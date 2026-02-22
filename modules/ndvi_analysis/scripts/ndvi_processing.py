@@ -62,7 +62,7 @@ def plot_ndvi(ndvi):
     cbar_plot = ax.imshow(ndvi, cmap=colormap, vmin=min_val, vmax=max_val)
 
     ax.axis('off')
-    ax.set_title("Normalized Difference Vegetation Index")
+    ax.set_title("Índice de Vegetação por Diferença Normalizada")
 
     fig.colorbar(cbar_plot, orientation='horizontal', shrink=0.65)
     fig.savefig("outputs/ndvi_fort_lauderdale.png", dpi=300, bbox_inches='tight')
@@ -79,9 +79,9 @@ def plot_histogram(ndvi):
     x = ndvi[~np.isnan(ndvi)]
     ax.hist(x, bins=30, color='green', ec='black')
 
-    ax.set_title("NDVI Histogram")
-    ax.set_xlabel("NDVI values")
-    ax.set_ylabel("Number of pixels")
+    ax.set_title("NDVI Histograma")
+    ax.set_xlabel("NDVI valores")
+    ax.set_ylabel("Número de pixels")
 
     fig.savefig("outputs/histograma_fort_lauderdale.png", dpi=300, bbox_inches='tight')
 
@@ -106,7 +106,7 @@ def plot_classification(classified):
     im = ax.imshow(classified, cmap=cmap, vmin=1, vmax=6)
 
     ax.axis('off')
-    ax.set_title("NDVI Classification")
+    ax.set_title("NDVI Classificação")
 
     fig.savefig("outputs/ndvi_classificado.png",
                 dpi=300, bbox_inches='tight')
@@ -125,7 +125,7 @@ def plot_median_filtered(median_filtered):
     im = ax.imshow(median_filtered, cmap=cmap, vmin=1, vmax=6)
 
     ax.axis('off')
-    ax.set_title("NDVI Classification - Median Filtered")
+    ax.set_title("NDVI Classificação - Filtro Mediano")
 
     fig.savefig("outputs/ndvi_filtro_mediano.png",
                 dpi=300, bbox_inches='tight')
@@ -157,10 +157,10 @@ def main():
     plot_histogram(ndvi)
 
     classified = classify_ndvi(ndvi)
-    plot_classification(classified)           # plota e salva a classificação
+    plot_classification(classified)           
 
     smoothed = smooth_classification(classified)
-    plot_median_filtered(smoothed)            # plota e salva a classificação com filtro de mediana
+    plot_median_filtered(smoothed)            
 
 
 if __name__ == "__main__":
