@@ -38,7 +38,7 @@ Americas_Techguard/
 ## Requisitos
 
 - Python 3.9 ou superior
-- Dependências listadas em `requerementos.txt`
+- Dependências listadas em `requerimentos.txt`
 
 
 ## Instalação
