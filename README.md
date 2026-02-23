@@ -38,7 +38,7 @@ Americas_Techguard/
 ## Requisitos
 
 - Python 3.9 ou superior
-- Dependências listadas em `requirements.txt`
+- Dependências listadas em `requerementos.txt`
 
 
 ## Instalação
@@ -46,7 +46,7 @@ Americas_Techguard/
 Clone o repositório e, na raiz do projeto, execute:
 
 ```bash
-pip install -r requirements.txt
+pip install -r requerimentos.txt
 ``` 
 ## Como Executar
 
