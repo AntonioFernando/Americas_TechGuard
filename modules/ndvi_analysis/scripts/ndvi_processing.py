@@ -108,10 +108,11 @@ def plot_classification(classified):
     ax.axis('off')
     ax.set_title("NDVI Classificação - Fort Lauderdale - 06/03/2023")
 
-    fig.savefig("outputs/ndvi_classificado.png",
-                dpi=300, bbox_inches='tight')
+    fig.savefig("outputs/ndvi_classificado.png",dpi=300, bbox_inches='tight')
 
     plt.show()
+
+# 6. Aplicar mediano
 
 def apply_median_filter(classified):
     return cv2.medianBlur(classified, 13)
@@ -127,8 +128,7 @@ def plot_median_filtered(median_filtered):
     ax.axis('off')
     ax.set_title("NDVI Filtro Mediano - Fort Lauderdale - 06/03/2023")
 
-    fig.savefig("outputs/ndvi_filtro_mediano.png",
-                dpi=300, bbox_inches='tight')
+    fig.savefig("outputs/ndvi_filtro_mediano.png", dpi=300, bbox_inches='tight')
 
     plt.show()
 
@@ -141,7 +141,7 @@ def smooth_classification(classified):
 
 
 def main():
-    filepath = "data/Fort_Lauderdale_MSI_all_bands.tif"
+    filepath = "data/Fort_Lauderdale_MSI_all_bands.tif" # importante trocar para pasta onde está a imagem em seu computador
 
     raster_arr = load_multiband_raster(filepath)
 
