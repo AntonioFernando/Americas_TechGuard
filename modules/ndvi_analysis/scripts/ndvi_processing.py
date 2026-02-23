@@ -6,9 +6,9 @@ import cv2
 from matplotlib import colors
 
 
-# =========================
+
 # 1. Carregamento do Raster
-# =========================
+
 
 def load_multiband_raster(filepath):
     """
@@ -18,9 +18,9 @@ def load_multiband_raster(filepath):
         return raster.read()
 
 
-# =========================
+
 # 2. Calculo do NDVI
-# =========================
+
 
 def calculate_ndvi(band_red, band_nir):
     """
@@ -32,9 +32,9 @@ def calculate_ndvi(band_red, band_nir):
            (band_nir + band_red)
 
 
-# =========================
+
 # 3. Plot NDVI
-# =========================
+
 
 class MidpointNormalize(colors.Normalize):
     def __init__(self, vmin=None, vmax=None, midpoint=None, clip=False):
@@ -62,16 +62,16 @@ def plot_ndvi(ndvi):
     cbar_plot = ax.imshow(ndvi, cmap=colormap, vmin=min_val, vmax=max_val)
 
     ax.axis('off')
-    ax.set_title("Índice de Vegetação por Diferença Normalizada")
+    ax.set_title("NDVI - Fort Lauderdale - 06/03/2023")
 
     fig.colorbar(cbar_plot, orientation='horizontal', shrink=0.65)
     fig.savefig("outputs/ndvi_fort_lauderdale.png", dpi=300, bbox_inches='tight')
     plt.show()
 
 
-# =========================
+
 # 4. Histograma
-# =========================
+
 
 def plot_histogram(ndvi):
     fig, ax = plt.subplots(figsize=(12, 6))
@@ -79,7 +79,7 @@ def plot_histogram(ndvi):
     x = ndvi[~np.isnan(ndvi)]
     ax.hist(x, bins=30, color='green', ec='black')
 
-    ax.set_title("NDVI Histograma")
+    ax.set_title("NDVI Histograma - Fort Lauderdale - 06/03/2023")
     ax.set_xlabel("NDVI valores")
     ax.set_ylabel("Número de pixels")
 
@@ -88,9 +88,9 @@ def plot_histogram(ndvi):
     plt.show()
 
 
-# =========================
+
 # 5. Classificação
-# =========================
+
 
 def classify_ndvi(ndvi):
     bins = [-1, -0.5, 0, 0.25, 0.5, 1]
@@ -106,7 +106,7 @@ def plot_classification(classified):
     im = ax.imshow(classified, cmap=cmap, vmin=1, vmax=6)
 
     ax.axis('off')
-    ax.set_title("NDVI Classificação")
+    ax.set_title("NDVI Classificação - Fort Lauderdale - 06/03/2023")
 
     fig.savefig("outputs/ndvi_classificado.png",
                 dpi=300, bbox_inches='tight')
@@ -125,7 +125,7 @@ def plot_median_filtered(median_filtered):
     im = ax.imshow(median_filtered, cmap=cmap, vmin=1, vmax=6)
 
     ax.axis('off')
-    ax.set_title("NDVI Classificação - Filtro Mediano")
+    ax.set_title("NDVI Filtro Mediano - Fort Lauderdale - 06/03/2023")
 
     fig.savefig("outputs/ndvi_filtro_mediano.png",
                 dpi=300, bbox_inches='tight')
@@ -136,9 +136,9 @@ def smooth_classification(classified):
     return cv2.medianBlur(classified, 13)
 
 
-# =========================
+
 # 6. Pipeline Principal
-# =========================
+
 
 def main():
     filepath = "data/Fort_Lauderdale_MSI_all_bands.tif"
