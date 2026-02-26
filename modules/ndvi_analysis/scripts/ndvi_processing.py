@@ -66,7 +66,7 @@ def plot_ndvi(ndvi, output_dir):
     plt.show()
 
 
-# 4. Histograma
+# 4. Plot Histograma
 
 def plot_histogram(ndvi, output_dir):
     fig, ax = plt.subplots(figsize=(12, 6))
@@ -84,7 +84,7 @@ def plot_histogram(ndvi, output_dir):
     plt.show()
 
 
-# 5. Classificação
+# 5. Plot Classificação
 
 def classify_ndvi(ndvi):
     bins = [-1, -0.5, 0, 0.25, 0.5, 1]
@@ -109,7 +109,7 @@ def plot_classification(classified, output_dir):
     plt.show()
 
 
-# 6. Aplicar mediano
+# 6. Plot Mediano
 
 def smooth_classification(classified):
     return cv2.medianBlur(classified, 13)

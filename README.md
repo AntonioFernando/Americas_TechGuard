@@ -43,14 +43,14 @@ Americas_Techguard/
 
 ## Instalação
 
-**Nota:** Os arquivos de dados geoespaciais (`.tif`) não estão incluídos no repositório GitHub devido ao tamanho.  
-Para executar o módulo NDVI, crie a pasta `data/` na raiz do projeto e coloque o arquivo `Fort_Lauderdale_MSI_all_bands.tif` dentro.
-
 Clone o repositório e, na raiz do projeto, execute:
 
 ```bash
 pip install -r requerimentos.txt
 ``` 
+**Nota:** Os arquivos de dados geoespaciais (`.tif`) não estão incluídos no repositório GitHub devido ao tamanho.  
+Para executar o módulo NDVI, crie a pasta `data/` na raiz do projeto e coloque o arquivo `Fort_Lauderdale_MSI_all_bands.tif`, ou qualquer outro arquivo (`.tif`) dentro.
+
 ## Como Executar
 
 Na raiz do projeto, execute:
