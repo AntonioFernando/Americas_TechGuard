@@ -48,8 +48,16 @@ Clone o repositório e, na raiz do projeto, execute:
 ```bash
 pip install -r requerimentos.txt
 ``` 
-**Nota:** Os arquivos de dados geoespaciais (`.tif`) não estão incluídos no repositório GitHub devido ao tamanho.  
-Para executar o módulo NDVI, crie a pasta `data/` na raiz do projeto e coloque o arquivo `Fort_Lauderdale_MSI_all_bands.tif`, ou qualquer outro arquivo (`.tif`) dentro.
+**Nota:** 
+1. Os arquivos de dados geoespaciais (`.tif`) não estão incluídos no repositório GitHub devido ao tamanho.  
+2. Para executar o módulo NDVI:
+    - crie a pasta `data/` na raiz do projeto
+    - coloque o arquivo `Fort_Lauderdale_MSI_all_bands.tif`, ou qualquer outro arquivo (`.tif`) compatível dentro dessa pasta. 
+3. O arquivo geoespacial deve ter as bandas RED e NIR nas posições:
+    - RED -> Banda 4
+    - NIR -> Banda 8
+
+> Esses arquivos são necessários para que o módulo calcule corretamente o NDVI e gere mapas e histogramas precisos.
 
 ## Como Executar
 
