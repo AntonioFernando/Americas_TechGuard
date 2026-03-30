@@ -56,11 +56,11 @@ def plot_ndvi(ndvi, output_dir):
     cbar_plot = ax.imshow(ndvi, cmap=colormap, norm=norm)
 
     ax.axis('off')
-    ax.set_title("NDVI - Fort Lauderdale - 06/03/2023")
+    ax.set_title("NDVI - Recife - agosto de 2022")
 
     fig.colorbar(cbar_plot, orientation='horizontal', shrink=0.65)
 
-    fig.savefig(os.path.join(output_dir, "ndvi_fort_lauderdale.png"),
+    fig.savefig(os.path.join(output_dir, "ndvi_Recife - agosto de 2022.png"),
                 dpi=300, bbox_inches='tight')
 
     plt.show()
@@ -74,11 +74,11 @@ def plot_histogram(ndvi, output_dir):
     x = ndvi[~np.isnan(ndvi)]
     ax.hist(x, bins=30, color='green', ec='black')
 
-    ax.set_title("NDVI Histograma - Fort Lauderdale - 06/03/2023")
+    ax.set_title("NDVI Histograma - Recife - agosto de 2022")
     ax.set_xlabel("NDVI valores")
     ax.set_ylabel("Número de pixels")
 
-    fig.savefig(os.path.join(output_dir, "histograma_fort_lauderdale.png"),
+    fig.savefig(os.path.join(output_dir, "histograma_Recife.png"),
                 dpi=300, bbox_inches='tight')
 
     plt.show()
@@ -101,7 +101,7 @@ def plot_classification(classified, output_dir):
     ax.imshow(classified, cmap=cmap, vmin=1, vmax=6)
 
     ax.axis('off')
-    ax.set_title("NDVI Classificação - Fort Lauderdale - 06/03/2023")
+    ax.set_title("NDVI Classificação - Recife - agosto de 2022")
 
     fig.savefig(os.path.join(output_dir, "ndvi_classificado.png"),
                 dpi=300, bbox_inches='tight')
@@ -124,7 +124,7 @@ def plot_median_filtered(median_filtered, output_dir):
     ax.imshow(median_filtered, cmap=cmap, vmin=1, vmax=6)
 
     ax.axis('off')
-    ax.set_title("NDVI Filtro Mediano - Fort Lauderdale - 06/03/2023")
+    ax.set_title("NDVI Filtro Mediano - Recife - agosto de 2022")
 
     fig.savefig(os.path.join(output_dir, "ndvi_filtro_mediano.png"),
                 dpi=300, bbox_inches='tight')
@@ -156,7 +156,7 @@ def main():
     os.makedirs(output_dir, exist_ok=True)
 
     # Caminho completo do arquivo raster
-    filepath = os.path.join(data_dir, "Fort_Lauderdale_MSI_all_bands.tif")
+    filepath = os.path.join(data_dir, "Recife_MSI_all_bands_20_agosto_2022.tif")
 
     # Verifica se o arquivo existe
     if not os.path.exists(filepath):

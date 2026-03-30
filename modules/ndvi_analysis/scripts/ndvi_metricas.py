@@ -60,7 +60,7 @@ def plot_area_distribution(areas, output_dir):
     fig, ax = plt.subplots(figsize=(10,6))
     ax.bar(classes, percentages)
 
-    ax.set_title("Distribuição Percentual das Classes NDVI — Fort Lauderdale — outubro")
+    ax.set_title("Distribuição Percentual das Classes NDVI — Recife — agosto")
     ax.set_ylabel("Porcentagem (%)")
     ax.set_xlabel("Classes")
 
@@ -88,7 +88,7 @@ def main():
 
     filepath = os.path.join(
         data_dir,
-        "Fort_Lauderdale_MSI_all_bands.tif"
+        "Recife_MSI_all_bands_20_agosto_2022.tif"
     )
 
     if not os.path.exists(filepath):

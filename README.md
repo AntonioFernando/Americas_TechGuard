@@ -15,6 +15,7 @@ O módulo `ndvi_analysis` realiza:
 - Geração de histograma dos valores
 - Classificação temática da vegetação
 - Aplicação de filtro mediano para suavização
+- Cálculo de área de risco
 
 ## Estrutura do Projeto
 
@@ -35,7 +36,13 @@ Americas_Techguard/
             ├── ndvi_processing.py
             ├── ndvi_comparacao.py
             ├── ndvi_sazonalidade.py
-            └── ndvi_metricas.py
+            ├── ndvi_metricas.py
+            ├── comparativo.py
+            ├── compare_regions.py
+            ├── flood_model.py
+            ├── flood_comparison_model.py
+            └── area_de_risco.py
+            
 ```
 
 ## Requisitos
@@ -92,4 +99,9 @@ python modules/ndvi_analysis/scripts/ndvi_metricas.py
 
 ```bash
 python modules/ndvi_analysis/scripts/ndvi_sazonalidade.py
+```
+### 5. Cálculo de área de risco
+
+```bash
+python modules/ndvi_analysis/scripts/area_de_risco.py
 ```
