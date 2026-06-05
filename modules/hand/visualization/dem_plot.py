@@ -41,7 +41,7 @@ def plot_dem(dem_path: Path, title="DEM - Elevação"):
 
 
 # =========================================================
-# PLOT AVANÇADO (COM BASEMAP - SEU CÓDIGO INTEGRADO)
+# PLOT AVANÇADO (COM BASEMAP)
 # =========================================================
 
 def plot_dem_with_basemap(dem_path: Path, title="DEM sobre satélite"):
