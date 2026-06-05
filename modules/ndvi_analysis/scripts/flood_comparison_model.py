@@ -72,10 +72,10 @@ def plot_flood_curve_comparison(rec_curve, fort_curve):
     plt.figure(figsize=(12,6))
     plt.plot(minutes, rec_curve, label="Recife", color="blue")
     plt.plot(minutes, fort_curve, label="Fort Lauderdale", color="green")
-    plt.axhline(y=40, linestyle="--", color="red", label="Limiar de inundação")
-    plt.xlabel("Tempo (min)")
-    plt.ylabel("Água acumulada (mm)")
-    plt.title("Comparação da evolução da inundação")
+    plt.axhline(y=40, linestyle="--", color="red", label="Flood Threshold")
+    plt.xlabel("Time (min)")
+    plt.ylabel("Surface Water Accumulation (mm)")
+    plt.title("Comparative Analysis of Flood Evolution")
     plt.legend()
     plt.tight_layout()
     plt.show()
@@ -92,8 +92,8 @@ def plot_bar_comparison(rec_results, fort_results):
     width = 0.35
 
     plt.figure(figsize=(8,6))
-    bars1 = plt.bar(x - width/2, flood_times, width, label="Tempo até inundação", color="skyblue")
-    bars2 = plt.bar(x + width/2, drainage_times, width, label="Tempo até drenagem", color="orange")
+    bars1 = plt.bar(x - width/2, flood_times, width, label="Time to Flood Onset", color="skyblue")
+    bars2 = plt.bar(x + width/2, drainage_times, width, label="Drainage Time", color="orange")
 
     # Adiciona os valores em cima de cada barra
     for bar in bars1:
@@ -104,8 +104,8 @@ def plot_bar_comparison(rec_results, fort_results):
                  ha='center', va='bottom', fontsize=10)
 
     plt.xticks(x, cities)
-    plt.ylabel("Tempo (min)")
-    plt.title("Comparação de inundação e drenagem entre cidades")
+    plt.ylabel("Time (min)")
+    plt.title("Comparative Analysis of Flooding and Drainage Across Cities")
     plt.legend()
     plt.tight_layout()
     plt.show()

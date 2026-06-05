@@ -67,8 +67,8 @@ def plot_class_comparison(areas1, areas2, label1, label2, output_dir):
     ax.bar(x - width/2, vals1, width, label=label1)
     ax.bar(x + width/2, vals2, width, label=label2)
 
-    ax.set_ylabel("Porcentagem (%)")
-    ax.set_title("Comparação de Classes NDVI")
+    ax.set_ylabel("Percentage (%)")
+    ax.set_title("Comparative Analysis of NDVI Classes")
     ax.set_xticks(x)
     ax.set_xticklabels(classes, rotation=45)
 

@@ -63,8 +63,8 @@ def main():
     os.makedirs(output_dir, exist_ok=True)
 
     # Arquivos raster
-    filepath_1 = os.path.join(data_dir, "Fort_Lauderdale_MSI_all_bands.tif")
-    filepath_2 = os.path.join(data_dir, "Fort_Lauderdale_MSI_all_bands_apos_enchente_outubro.tif")
+    filepath_1 = os.path.join(data_dir, "Recife_MSI_all_bands_2_abril_2022.tif")
+    filepath_2 = os.path.join(data_dir, "Recife_MSI_all_bands_20_agosto_2022.tif")
     for fp in [filepath_1, filepath_2]:
         if not os.path.exists(fp):
             print(f"Erro: arquivo não encontrado em {fp}")
@@ -86,16 +86,16 @@ def main():
    
     # Plots NDVI
    
-    plot_ndvi(ndvi_1, "NDVI - Fort Lauderdale - Março", "ndvi_march.png", output_dir)
-    plot_ndvi(ndvi_2, "NDVI - Fort Lauderdale - Outubro", "ndvi_october.png", output_dir)
-    plot_ndvi(delta_ndvi, "ΔNDVI (Outubro - Março)", "delta_ndvi.png", output_dir, midpoint=0)
+    plot_ndvi(ndvi_1, "NDVI - REcife - April 2022", "ndvi_march.png", output_dir)
+    plot_ndvi(ndvi_2, "NDVI - Recife - August 2022", "ndvi_october.png", output_dir)
+    plot_ndvi(delta_ndvi, "ΔNDVI (August - April)", "delta_ndvi.png", output_dir, midpoint=0)
 
    
     # Histogramas
     
-    plot_histogram(ndvi_1, "Histograma NDVI - Março", "hist_ndvi_march.png", output_dir)
-    plot_histogram(ndvi_2, "Histograma NDVI - Outubro", "hist_ndvi_october.png", output_dir)
-    plot_histogram(delta_ndvi, "Histograma ΔNDVI", "hist_delta_ndvi.png", output_dir)
+    plot_histogram(ndvi_1, "Histogram NDVI - March", "hist_ndvi_march.png", output_dir)
+    plot_histogram(ndvi_2, "Histogram NDVI - October", "hist_ndvi_october.png", output_dir)
+    plot_histogram(delta_ndvi, "Histogram ΔNDVI", "hist_delta_ndvi.png", output_dir)
 
    
     
@@ -113,8 +113,8 @@ def main():
     mid_val = (delta_min + delta_max) / 2
 
     # Informações rápidas
-    print("NDVI Março Min/Max:", np.nanmin(ndvi_1), np.nanmax(ndvi_1))
-    print("NDVI Outubro Min/Max:", np.nanmin(ndvi_2), np.nanmax(ndvi_2))
+    print("NDVI March Min/Max:", np.nanmin(ndvi_1), np.nanmax(ndvi_1))
+    print("NDVI October Min/Max:", np.nanmin(ndvi_2), np.nanmax(ndvi_2))
     print("ΔNDVI Min/Max:", np.nanmin(delta_ndvi), np.nanmax(delta_ndvi))
 
 if __name__ == "__main__":

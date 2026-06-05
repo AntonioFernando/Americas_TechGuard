@@ -1,8 +1,6 @@
 # Americas_Techguard
 
-O Americas TechGuard tem como objetivo estruturar soluções tecnológicas aplicadas ao
-monitoramento, prevenção e resposta a desastres climáticos, integrando dados ambientais,
-sensoriamento remoto e análise geoespacial.
+O Americas TechGuard é uma plataforma de análise geoespacial voltada ao monitoramento, prevenção e resposta a desastres climáticos, integrando sensoriamento remoto, dados hidrológicos, modelos digitais de terreno e análise espacial para apoiar a tomada de decisão.
 
 ---
 
@@ -17,6 +15,20 @@ O módulo `ndvi_analysis` realiza:
 - Aplicação de filtro mediano para suavização
 - Cálculo de área de risco
 
+## Objetivo do Módulo HAND
+
+O modelo HAND (Height Above Nearest Drainage) calcula a altura relativa de cada ponto do terreno em relação ao curso d’água hidrologicamente conectado mais próximo.
+
+Essa metodologia é amplamente utilizada para identificar áreas potencialmente sujeitas a inundação, permitindo a classificação espacial do risco com base na topografia local.
+
+O módulo `hand` realiza:
+
+- Download automático de limites municipais do IBGE
+- Delimitação das ottobacias hidrográficas
+- Geração do Modelo HAND (Height Above Nearest Drainage)
+- Classificação de áreas suscetíveis à inundação
+- Geração de mapas de risco de inundação
+
 ## Estrutura do Projeto
 
 ```
@@ -28,30 +40,54 @@ Americas_Techguard/
 ├── docs/
 │
 └── modules/
-    └── ndvi_analysis/
-        ├── images/
-        ├── notebook/
-        ├── outputs/
-        └── scripts/
-            ├── ndvi_processing.py
-            ├── ndvi_comparacao.py
-            ├── ndvi_sazonalidade.py
-            ├── ndvi_metricas.py
-            ├── comparativo.py
-            ├── compare_regions.py
-            ├── flood_model.py
-            ├── flood_comparison_model.py
-            └── area_de_risco.py
-            
+    ├── ndvi_analysis/
+    │   ├── images/
+    │   ├── notebook/
+    │   ├── outputs/
+    │   └── scripts/
+    │       ├── ndvi_processing.py
+    │       ├── ndvi_comparacao.py
+    │       ├── ndvi_sazonalidade.py
+    │       ├── ndvi_metricas.py
+    │       ├── comparativo.py
+    │       ├── compare_regions.py
+    │       ├── flood_model.py
+    │       ├── flood_comparison_model.py
+    │       └── area_de_risco.py
+    │        
+    └── hand/
+        ├── core
+        │   ├── ibge.py
+        │   ├── snirh.py
+        │   ├── dem.py
+        │   ├── hand.py
+        │   └── risk.py
+        ├── outputs_dem
+        │   ├── dem_source.tif
+        │   └── ibge_2023.zip
+        ├── outputs_hand
+        │   ├── hand_risk.png
+        │   └── hand_risk.tif
+        ├── pipeline
+        │   └── hand_pipeline.py
+        ├── visualization
+        │   └── risk_plot.py
+        └── main.py
+        
+
+
+
+
 ```
 
 ## Requisitos
 
 - Python 3.9 ou superior
-- Dependências listadas em `requerimentos.txt`
+- (modulo NDVI) Dependências listadas em `requerimentos.txt`
+- (modulo HAND) Dependências listadas em `requeriments.txt`
 
 
-## Instalação
+## Instalação (módulo NDVI)
 
 Clone o repositório e, na raiz do projeto, execute:
 
@@ -104,4 +140,23 @@ python modules/ndvi_analysis/scripts/ndvi_sazonalidade.py
 
 ```bash
 python modules/ndvi_analysis/scripts/area_de_risco.py
+```
+## Instalação (módulo HAND)
+
+Clone o repositório e, na raiz do projeto, execute:
+
+```bash
+pip install -r requeriments.txt
+``` 
+**Nota:** 
+1. Os arquivos de dados geoespaciais (`.tif`) não estão incluídos no repositório GitHub devido ao tamanho.  
+
+## Como Executar
+
+Na raiz do projeto:
+
+### Geração automática de mapa de risco de inundação (HAND)
+
+```bash
+python modules/hand/main.py
 ```

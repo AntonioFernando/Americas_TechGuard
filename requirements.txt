@@ -1,0 +1,15 @@
+matplotlib
+whitebox>=2.3.2
+hydrobr
+geopandas
+shapely
+contextily
+pykrige
+scipy
+scikit-learn
+fiona
+pysheds
+rasterio 
+rioxarray 
+pystac-client 
+planetary-computer 

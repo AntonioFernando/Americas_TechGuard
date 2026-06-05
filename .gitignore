@@ -1,2 +1,8 @@
 # Ignorar todos os arquivos .tif grandes
 data/*.tif
+env/
+__pycache__/
+*.pyc
+outputs_dem/
+outputs_hand/
+outputs/

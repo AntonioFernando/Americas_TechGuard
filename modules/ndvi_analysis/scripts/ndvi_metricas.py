@@ -26,10 +26,10 @@ def area_by_class(ndvi, pixel_area):
     total_pixels = np.sum(valid_mask)
 
     classes = {
-        "água": ndvi < 0,
-        "solo_exposto": (ndvi >= 0) & (ndvi < 0.2),
-        "veg_moderada": (ndvi >= 0.2) & (ndvi < 0.5),
-        "veg_densa": ndvi >= 0.5
+        "water": ndvi < 0,
+        "bare_soil": (ndvi >= 0) & (ndvi < 0.2),
+        "moderate_vegetation": (ndvi >= 0.2) & (ndvi < 0.5),
+        "dense-vegetation": ndvi >= 0.5
     }
 
     results = {}

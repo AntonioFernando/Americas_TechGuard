@@ -24,7 +24,7 @@ fig, ax = plt.subplots()
 ax.bxp(stats, showfliers=False)
 
 ax.set_ylabel("NDVI")
-ax.set_title("Comparação da distribuição do NDVI")
+ax.set_title("Comparative Analysis of NDVI Distributions")
 ax.grid(True)
 
 plt.show()
