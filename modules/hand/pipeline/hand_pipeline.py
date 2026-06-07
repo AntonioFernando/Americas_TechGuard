@@ -45,6 +45,10 @@ def run_pipeline(outdir: Path, year=2023):
     xmin, ymin, xmax, ymax = blum_3857.total_bounds
 
     ottos = query_ottobacias((xmin, ymin, xmax, ymax))
+
+    if ottos.crs != blum_3857.crs:
+        ottos = ottos.to_crs(blum_3857.crs)
+
     ottos = intersect(ottos, blum_3857.geometry.iloc[0])
 
     if ottos.empty:
@@ -92,7 +96,7 @@ def run_pipeline(outdir: Path, year=2023):
     # plot_dem_with_basemap(dem_path)
     # export_dem_png(dem_path, outdir / "dem.png")
 
-    plot_risk(risk_path, "Mapa de Risco - Blumenau")
+    plot_risk(risk_path, "Mapa de Susceptibilidade - Blumenau")
 
     return {
         "ottos": ottos,

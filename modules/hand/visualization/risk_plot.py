@@ -52,7 +52,7 @@ def plot_risk(
     ])
 
     fig, ax = plt.subplots(
-        figsize=(5, 14)
+        figsize=(6, 10)
     )
 
     r_plot.plot(
@@ -83,7 +83,7 @@ def plot_risk(
 def export_risk_png(
     risk_path: Path,
     output_png: Path,
-    title="Mapa de Risco"
+    title="Mapa de Susceptibilidade"
 ):
 
     print("[RISK] Exportando PNG...")

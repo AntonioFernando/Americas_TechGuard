@@ -19,7 +19,7 @@ O módulo `ndvi_analysis` realiza:
 
 O modelo HAND (Height Above Nearest Drainage) calcula a altura relativa de cada ponto do terreno em relação ao curso d’água hidrologicamente conectado mais próximo.
 
-Essa metodologia é amplamente utilizada para identificar áreas potencialmente sujeitas a inundação, permitindo a classificação espacial do risco com base na topografia local.
+Essa metodologia é amplamente utilizada para identificar áreas potencialmente sujeitas a inundação, permitindo a classificação de suscetibilidade a inundações com base na topografia local.
 
 O módulo `hand` realiza:
 
@@ -27,7 +27,7 @@ O módulo `hand` realiza:
 - Delimitação das ottobacias hidrográficas
 - Geração do Modelo HAND (Height Above Nearest Drainage)
 - Classificação de áreas suscetíveis à inundação
-- Geração de mapas de risco de inundação
+- Geração de mapas de suscetibilidade à inundação
 
 ## Estrutura do Projeto
 
@@ -155,7 +155,7 @@ pip install -r requeriments.txt
 
 Na raiz do projeto:
 
-### Geração automática de mapa de risco de inundação (HAND)
+### Geração automática de mapa de susceptibilidade à inundação (HAND)
 
 ```bash
 python modules/hand/main.py
