@@ -6,11 +6,53 @@ from ndvi_processing import load_multiband_raster, calculate_ndvi
 # -----------------------------
 # Runoff baseado em NDVI + solo
 # -----------------------------
-def runoff_from_ndvi_and_soil(ndvi_mean, soil_permeability):
-    runoff = 0.9 - (ndvi_mean * 0.6)
-    runoff *= (1 - 0.5 * soil_permeability)  # solo permeável reduz runoff
-    runoff = np.clip(runoff, 0.05, 0.95)
-    return runoff
+def runoff_from_ndvi_and_soil(
+    ndvi_mean,
+    soil_permeability,
+    rmax=0.9,
+    alpha=0.6,
+    beta=0.5,
+):
+    """
+    Estima o coeficiente de runoff baseado em NDVI
+    e permeabilidade do solo.
+
+    Equation:
+    
+    R = (Rmax - alpha * NDVI) * (1 - beta * Ps)
+
+    Parameters
+    ----------
+    ndvi_mean : float
+        NDVI médio da região.
+
+    soil_permeability : float
+        Coeficiente de permeabilidade do solo.
+        0 = baixa permeabilidade
+        1 = alta permeabilidade
+
+    rmax : float
+        Runoff máximo potencial.
+
+    alpha : float
+        Sensibilidade do runoff à vegetação.
+
+    beta : float
+        Peso da influência da permeabilidade do solo.
+
+    Returns
+    -------
+    float
+        Coeficiente de runoff limitado entre 0.05 e 0.95.
+    """
+
+    runoff = (
+        rmax - alpha * ndvi_mean
+    ) * (
+        1 - beta * soil_permeability
+    )
+
+    return np.clip(runoff, 0.05, 0.95)
 
 # -----------------------------
 # Simulação hidrológica
