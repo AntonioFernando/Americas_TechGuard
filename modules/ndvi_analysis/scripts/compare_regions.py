@@ -99,20 +99,20 @@ def main():
 
     recife_file = os.path.join(
         data_dir,
-        "Recife_MSI_all_bands_20_agosto_2022.tif"
+        "Recife_MSI_all_bands_20_august_2022.tif"
     )
 
     florida_file = os.path.join(
         data_dir,
-        "Fort_Lauderdale_MSI_all_bands_apos_enchente_outubro.tif"
+        "Fort_Lauderdale_MSI_all_bands_october_2023.tif"
     )
 
     if not os.path.exists(recife_file):
-        print("Arquivo de Recife não encontrado.")
+        print("Recife file not found.")
         return
 
     if not os.path.exists(florida_file):
-        print("Arquivo de Fort Lauderdale não encontrado.")
+        print("Fort Lauderdale file not found.")
         return
 
     print("\nProcessando Recife...")
@@ -121,11 +121,11 @@ def main():
     print("\nProcessando Fort Lauderdale...")
     stats_florida, areas_florida = process_ndvi(florida_file)
 
-    print("\n=== Estatísticas Recife ===")
+    print("\n=== Estatistics Recife ===")
     for k, v in stats_recife.items():
         print(f"{k}: {v:.4f}")
 
-    print("\n=== Estatísticas Fort Lauderdale ===")
+    print("\n=== Estatistics Fort Lauderdale ===")
     for k, v in stats_florida.items():
         print(f"{k}: {v:.4f}")
 

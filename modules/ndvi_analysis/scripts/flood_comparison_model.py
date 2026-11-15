@@ -14,36 +14,36 @@ def runoff_from_ndvi_and_soil(
     beta=0.5,
 ):
     """
-    Estima o coeficiente de runoff baseado em NDVI
-    e permeabilidade do solo.
+    Estimates the runoff coefficient based on NDVI
+    and soil permeability.
 
     Equation:
-    
+
     R = (Rmax - alpha * NDVI) * (1 - beta * Ps)
 
     Parameters
     ----------
     ndvi_mean : float
-        NDVI médio da região.
+        Mean NDVI of the region.
 
     soil_permeability : float
-        Coeficiente de permeabilidade do solo.
-        0 = baixa permeabilidade
-        1 = alta permeabilidade
+        Soil permeability coefficient.
+        0 = low permeability
+        1 = high permeability
 
     rmax : float
-        Runoff máximo potencial.
+        Maximum potential runoff.
 
     alpha : float
-        Sensibilidade do runoff à vegetação.
+        Runoff sensitivity to vegetation.
 
     beta : float
-        Peso da influência da permeabilidade do solo.
+        Weight assigned to the influence of soil permeability.
 
     Returns
     -------
     float
-        Coeficiente de runoff limitado entre 0.05 e 0.95.
+        Runoff coefficient bounded between 0.0 and 1.0.
     """
 
     runoff = (
@@ -52,7 +52,7 @@ def runoff_from_ndvi_and_soil(
         1 - beta * soil_permeability
     )
 
-    return np.clip(runoff, 0.05, 0.95)
+    return np.clip(runoff, 0.0, 1.0)
 
 # -----------------------------
 # Simulação hidrológica
@@ -92,7 +92,7 @@ def simulate_rain_event(runoff_coef, rainfall_intensity=30, rainfall_duration=72
 # -----------------------------
 def compute_ndvi(filepath):
     if not os.path.exists(filepath):
-        raise FileNotFoundError(f"Arquivo não encontrado: {filepath}")
+        raise FileNotFoundError(f"File not found: {filepath}")
     raster = load_multiband_raster(filepath)
     band_red = raster[3]
     band_nir = raster[7]
@@ -160,10 +160,10 @@ def main():
     project_root = os.path.abspath(os.path.join(base_dir, "..", "..", ".."))
     data_dir = os.path.join(project_root, "data")
 
-    rec_path = os.path.join(data_dir, "Recife_MSI_all_bands_20_agosto_2022.tif")
-    fort_path = os.path.join(data_dir, "Fort_Lauderdale_MSI_all_bands_apos_enchente_outubro.tif")
+    rec_path = os.path.join(data_dir, "Recife_MSI_all_bands_20_august_2022.tif") # change Geotiff file acconrding your need
+    fort_path = os.path.join(data_dir, "Fort_Lauderdale_MSI_all_bands_october_2023.tif") # change Geotiff file acconrding your need
 
-    # Calcula NDVI
+    # Calculates NDVI
     rec_mean, rec_std = compute_ndvi(rec_path)
     fort_mean, fort_std = compute_ndvi(fort_path)
 
@@ -171,7 +171,7 @@ def main():
     print(f"Recife NDVI médio: {rec_mean:.3f}, desvio: {rec_std:.3f}")
     print(f"Fort Lauderdale NDVI médio: {fort_mean:.3f}, desvio: {fort_std:.3f}")
 
-    # Coeficiente de permeabilidade do solo
+    # Soil permeability coefficient
     rec_soil = 0.2  # argiloso
     fort_soil = 0.8  # arenoso
 
@@ -179,7 +179,7 @@ def main():
     rec_runoff = runoff_from_ndvi_and_soil(rec_mean, rec_soil)
     fort_runoff = runoff_from_ndvi_and_soil(fort_mean, fort_soil)
 
-    # Simulação
+    # Simulation
     rec_results = simulate_rain_event(runoff_coef=rec_runoff)
     fort_results = simulate_rain_event(runoff_coef=fort_runoff)
 
@@ -192,7 +192,7 @@ def main():
     print(f"Fort Lauderdale inundação: {fort_results[0]} min")
     print(f"Fort Lauderdale drenagem: {fort_results[1]} min")
 
-    # Gráficos
+    # Plots
     plot_flood_curve_comparison(rec_results[3], fort_results[3])
     plot_bar_comparison(rec_results, fort_results)
 

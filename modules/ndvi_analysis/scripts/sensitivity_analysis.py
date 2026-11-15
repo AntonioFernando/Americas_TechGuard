@@ -8,7 +8,7 @@ from flood_comparison_model import (
 
 
 # --------------------------------------------------------
-# Executa um cenário
+# Runs a scenario
 # --------------------------------------------------------
 def run_scenario(name, rmax, alpha, beta,
                  rec_mean, fort_mean,
@@ -54,7 +54,7 @@ def run_scenario(name, rmax, alpha, beta,
 
 
 # --------------------------------------------------------
-# Impressão formatada
+# Formatted output
 # --------------------------------------------------------
 def print_results(results):
 
@@ -100,12 +100,12 @@ def main():
 
     rec_path = os.path.join(
         data_dir,
-        "Recife_MSI_all_bands_20_agosto_2022.tif",
+        "Recife_MSI_all_bands_20_august_2022.tif",
     )
 
     fort_path = os.path.join(
         data_dir,
-        "Fort_Lauderdale_MSI_all_bands_apos_enchente_outubro.tif",
+        "Fort_Lauderdale_MSI_all_bands_after_flood_april_15th.tif",
     )
 
     rec_mean, _ = compute_ndvi(rec_path)

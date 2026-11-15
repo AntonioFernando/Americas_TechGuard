@@ -40,18 +40,18 @@ def plot_comparison(areas_marco, areas_outubro, output_dir):
 
     fig, ax = plt.subplots(figsize=(10,6))
 
-    ax.bar(x - width/2, perc_marco, width, label="Março")
-    ax.bar(x + width/2, perc_out, width, label="Outubro")
+    ax.bar(x - width/2, perc_marco, width, label="March")
+    ax.bar(x + width/2, perc_out, width, label="October")
 
     ax.set_xticks(x)
     ax.set_xticklabels(classes, rotation=45)
-    ax.set_ylabel("Porcentagem (%)")
-    ax.set_title("Comparação NDVI - Março vs Outubro")
+    ax.set_ylabel("Percentage (%)")
+    ax.set_title("Comparation NDVI - March vs October")
     ax.legend()
 
     # Salvar gráfico no diretório outputs
     fig.savefig(
-        os.path.join(output_dir, "Comparacao_marco_outubro_Fort_Lauderdale.png"),
+        os.path.join(output_dir, "Comparation_march_october_Fort_Lauderdale.png"),
         dpi=300,
         bbox_inches='tight'
     )
@@ -70,18 +70,18 @@ def main():
 
     # Definir caminhos das imagens
     filepath_marco = os.path.join(data_dir, "Fort_Lauderdale_MSI_all_bands.tif")
-    filepath_outubro = os.path.join(data_dir, "Fort_Lauderdale_MSI_all_bands_apos_enchente_outubro.tif")
+    filepath_outubro = os.path.join(data_dir, "Fort_Lauderdale_MSI_all_bands_after_flood_april_15th.tif")
 
     # Processar NDVI
     ndvi_marco, stats_marco, areas_marco = process_ndvi(filepath_marco)
     ndvi_out, stats_out, areas_out = process_ndvi(filepath_outubro)
 
     # Mostrar estatísticas
-    print("\n=== ESTATÍSTICAS MARÇO ===")
+    print("\n=== Statistics March ===")
     for k, v in stats_marco.items():
         print(f"{k}: {v:.4f}")
 
-    print("\n=== ESTATÍSTICAS OUTUBRO ===")
+    print("\n=== Statistics October ===")
     for k, v in stats_out.items():
         print(f"{k}: {v:.4f}")
 
@@ -98,10 +98,10 @@ def main():
     # Mostrar e salvar mapa da diferença NDVI
     plt.figure(figsize=(10,8))
     im = plt.imshow(ndvi_diff, cmap="RdYlGn")
-    plt.colorbar(im, label="Diferença NDVI (Outubro - Março)")
-    plt.title("Diferença NDVI Outubro - Março")
+    plt.colorbar(im, label="NDVI difference (October - March)")
+    plt.title("Difference NDVI October - March")
     plt.tight_layout()
-    plt.savefig(os.path.join(output_dir, "Diferenca_NDVI_Outubro_Marco.png"), dpi=300)
+    plt.savefig(os.path.join(output_dir, "Difference_NDVI_October_March.png"), dpi=300)
     plt.show()
 
 if __name__ == "__main__":

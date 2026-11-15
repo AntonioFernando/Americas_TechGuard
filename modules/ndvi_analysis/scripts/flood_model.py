@@ -8,14 +8,14 @@ from ndvi_processing import load_multiband_raster, calculate_ndvi
 # -----------------------------
 # Valores entre 0 (pouco permeável) e 1 (muito permeável)
 soil_permeability = {
-    "argiloso": 0.2,
-    "silte": 0.3,
-    "franco-argiloso": 0.4,
-    "franco": 0.5,
-    "arenoso-argiloso": 0.6,
-    "arenoso-franco": 0.7,
-    "arenoso": 0.8,
-    "rocha": 0.05
+    "clay": 0.2,
+    "silt": 0.3,
+    "clay_loam": 0.4,
+    "loam": 0.5,
+    "sandy_clay": 0.6,
+    "sandy_loam": 0.7,
+    "sand": 0.8,
+    "rock": 0.05
 }
 
 # -----------------------------
@@ -68,7 +68,7 @@ def simulate_rain_event(runoff_coef, rainfall_intensity=27.4, rainfall_duration=
 # -----------------------------
 def compute_ndvi(filepath):
     if not os.path.exists(filepath):
-        raise FileNotFoundError(f"Arquivo não encontrado: {filepath}")
+        raise FileNotFoundError(f"File not found: {filepath}")
     raster = load_multiband_raster(filepath)
     band_red = raster[3]
     band_nir = raster[7]
@@ -80,15 +80,15 @@ def compute_ndvi(filepath):
 # -----------------------------
 # Gráfico da evolução da inundação
 # -----------------------------
-def plot_flood_curve(water_curve, flood_threshold=40, city_name="Cidade"):
+def plot_flood_curve(water_curve, flood_threshold=40, city_name="City"):
     minutes = list(range(len(water_curve)))
 
     plt.figure(figsize=(12,6))
     plt.plot(minutes, water_curve, label=city_name, color="blue")
-    plt.axhline(y=flood_threshold, linestyle="--", color="red", label="Limiar de inundação")
-    plt.xlabel("Tempo (min)")
-    plt.ylabel("Água acumulada (mm)")
-    plt.title(f"Evolução da inundação em {city_name}")
+    plt.axhline(y=flood_threshold, linestyle="--", color="red", label="Flooding threshold")
+    plt.xlabel("Time (min)")
+    plt.ylabel("Accumulated water (mm)")
+    plt.title(f"Flood progression over time in {city_name}")
     plt.legend()
     plt.tight_layout()
     plt.show()
@@ -101,7 +101,7 @@ def main():
     project_root = os.path.abspath(os.path.join(base_dir, "..", "..", ".."))
     data_dir = os.path.join(project_root, "data")
 
-    file_path = os.path.join(data_dir, "Fort_Lauderdale_MSI_all_bands.tif")
+    file_path = os.path.join(data_dir, "Fort_Lauderdale_MSI_all_bands.tif") # change Geotiff file according your need
 
     # Calcula NDVI
     ndvi_mean, ndvi_std = compute_ndvi(file_path)
@@ -109,7 +109,7 @@ def main():
     print(f"Fort Lauderdale NDVI médio: {ndvi_mean:.3f}, desvio: {ndvi_std:.3f}")
 
     # Seleciona tipo de solo
-    soil_type = "arenoso-franco"
+    soil_type = "sandy_loam"
     soil_coef = soil_permeability[soil_type]
 
     # Runoff

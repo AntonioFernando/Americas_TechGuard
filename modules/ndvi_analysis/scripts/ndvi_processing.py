@@ -6,7 +6,7 @@ import cv2
 from matplotlib import colors
 
 
-# 1. Carregamento do Raster
+# 1. Load Raster
 
 def load_multiband_raster(filepath):
     """
@@ -16,7 +16,7 @@ def load_multiband_raster(filepath):
         return raster.read()
 
 
-# 2. Calculo do NDVI
+# 2. Calculate NDVI
 
 def calculate_ndvi(band_red, band_nir):
     """
@@ -56,17 +56,17 @@ def plot_ndvi(ndvi, output_dir):
     cbar_plot = ax.imshow(ndvi, cmap=colormap, norm=norm)
 
     ax.axis('off')
-    ax.set_title("NDVI - Recife - agosto de 2022")
+    ax.set_title("NDVI - Recife - August 2022")
 
     fig.colorbar(cbar_plot, orientation='horizontal', shrink=0.65)
 
-    fig.savefig(os.path.join(output_dir, "ndvi_Recife - agosto de 2022.png"),
+    fig.savefig(os.path.join(output_dir, "ndvi_Recife - August 2022.png"),
                 dpi=300, bbox_inches='tight')
 
     plt.show()
 
 
-# 4. Plot Histograma
+# 4. Plots Histogram
 
 def plot_histogram(ndvi, output_dir):
     fig, ax = plt.subplots(figsize=(12, 6))
@@ -74,17 +74,17 @@ def plot_histogram(ndvi, output_dir):
     x = ndvi[~np.isnan(ndvi)]
     ax.hist(x, bins=30, color='green', ec='black')
 
-    ax.set_title("NDVI Histograma - Recife - agosto de 2022")
-    ax.set_xlabel("NDVI valores")
-    ax.set_ylabel("Número de pixels")
+    ax.set_title("NDVI Histogram - Recife - August 2022")
+    ax.set_xlabel("NDVI values")
+    ax.set_ylabel("Pixels number")
 
-    fig.savefig(os.path.join(output_dir, "histograma_Recife.png"),
+    fig.savefig(os.path.join(output_dir, "histogram_Recife.png"),
                 dpi=300, bbox_inches='tight')
 
     plt.show()
 
 
-# 5. Plot Classificação
+# 5. Plots Classification
 
 def classify_ndvi(ndvi):
     bins = [-1, -0.5, 0, 0.25, 0.5, 1]
@@ -101,15 +101,15 @@ def plot_classification(classified, output_dir):
     ax.imshow(classified, cmap=cmap, vmin=1, vmax=6)
 
     ax.axis('off')
-    ax.set_title("NDVI Classificação - Recife - agosto de 2022")
+    ax.set_title("NDVI Classification - Recife - August 2022")
 
-    fig.savefig(os.path.join(output_dir, "ndvi_classificado.png"),
+    fig.savefig(os.path.join(output_dir, "ndvi_classified.png"),
                 dpi=300, bbox_inches='tight')
 
     plt.show()
 
 
-# 6. Plot Mediano
+# 6. Plots Median
 
 def smooth_classification(classified):
     return cv2.medianBlur(classified, 13)
@@ -124,15 +124,15 @@ def plot_median_filtered(median_filtered, output_dir):
     ax.imshow(median_filtered, cmap=cmap, vmin=1, vmax=6)
 
     ax.axis('off')
-    ax.set_title("NDVI Filtro Mediano - Recife - agosto de 2022")
+    ax.set_title("NDVI Median filter - Recife - August 2022")
 
-    fig.savefig(os.path.join(output_dir, "ndvi_filtro_mediano.png"),
+    fig.savefig(os.path.join(output_dir, "ndvi_median_filter.png"),
                 dpi=300, bbox_inches='tight')
 
     plt.show()
 
 
-# 7. Pipeline Principal
+# 7. Main Pipeline
 
 def main():
 
@@ -156,11 +156,11 @@ def main():
     os.makedirs(output_dir, exist_ok=True)
 
     # Caminho completo do arquivo raster
-    filepath = os.path.join(data_dir, "Recife_MSI_all_bands_20_agosto_2022.tif")
+    filepath = os.path.join(data_dir, "Recife_MSI_all_bands_20_august_2022.tif")
 
     # Verifica se o arquivo existe
     if not os.path.exists(filepath):
-        print(f"Erro: arquivo não encontrado em {filepath}")
+        print(f"Error: File not found {filepath}")
         return
 
     # Carrega raster

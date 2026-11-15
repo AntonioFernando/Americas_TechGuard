@@ -43,7 +43,7 @@ def area_by_class(ndvi, pixel_area):
         results[name] = {
             "pixels": pixels,
             "area_km2": area_km2,
-            "porcentagem": percent
+            "percentage": percent
         }
 
     return results
@@ -55,19 +55,19 @@ def plot_area_distribution(areas, output_dir):
 
     for classe, valores in areas.items():
         classes.append(classe)
-        percentages.append(valores["porcentagem"])
+        percentages.append(valores["percentage"])
 
     fig, ax = plt.subplots(figsize=(10,6))
     ax.bar(classes, percentages)
 
-    ax.set_title("Distribuição Percentual das Classes NDVI — Recife — agosto")
-    ax.set_ylabel("Porcentagem (%)")
+    ax.set_title("NDVI_Class_Percentage_Distribution_Recife_August")
+    ax.set_ylabel("Percentage (%)")
     ax.set_xlabel("Classes")
 
     plt.xticks(rotation=45)
 
     plt.tight_layout()
-    fig.savefig(os.path.join(output_dir, "distribuicao_percentual_ndvi.png"), dpi=300)
+    fig.savefig(os.path.join(output_dir, "percentage_distribution_ndvi.png"), dpi=300)
 
     plt.show()
 
@@ -88,7 +88,7 @@ def main():
 
     filepath = os.path.join(
         data_dir,
-        "Recife_MSI_all_bands_20_agosto_2022.tif"
+        "Recife_MSI_all_bands_20_august_2022.tif"
     )
 
     if not os.path.exists(filepath):

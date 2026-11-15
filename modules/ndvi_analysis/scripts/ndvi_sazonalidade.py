@@ -52,7 +52,7 @@ def smooth_classification(classified, ksize=13):
     return cv2.medianBlur(classified, ksize)
 
 
-# Pipeline Principal
+# Main Pipeline
 
 def main():
     # Diretórios
@@ -63,22 +63,22 @@ def main():
     os.makedirs(output_dir, exist_ok=True)
 
     # Arquivos raster
-    filepath_1 = os.path.join(data_dir, "Recife_MSI_all_bands_2_abril_2022.tif")
-    filepath_2 = os.path.join(data_dir, "Recife_MSI_all_bands_20_agosto_2022.tif")
+    filepath_1 = os.path.join(data_dir, "Recife_MSI_all_bands_2_april_2022.tif") # change Geotiff file accourding your need
+    filepath_2 = os.path.join(data_dir, "Recife_MSI_all_bands_20_august_2022.tif") # change Geotiff file accourding your need
     for fp in [filepath_1, filepath_2]:
         if not os.path.exists(fp):
             print(f"Erro: arquivo não encontrado em {fp}")
             return
 
-    # Carrega rasters
+    # Load rasters
     raster_1 = load_multiband_raster(filepath_1)
     raster_2 = load_multiband_raster(filepath_2)
 
-    # Seleciona bandas RED e NIR
+    # Select bands RED and NIR
     red_1, nir_1 = raster_1[3], raster_1[7]
     red_2, nir_2 = raster_2[3], raster_2[7]
 
-    # Calcula NDVI
+    # Calculate NDVI
     ndvi_1 = calculate_ndvi(red_1, nir_1)
     ndvi_2 = calculate_ndvi(red_2, nir_2)
     delta_ndvi = ndvi_2 - ndvi_1
@@ -86,12 +86,12 @@ def main():
    
     # Plots NDVI
    
-    plot_ndvi(ndvi_1, "NDVI - REcife - April 2022", "ndvi_march.png", output_dir)
+    plot_ndvi(ndvi_1, "NDVI - Recife - April 2022", "ndvi_march.png", output_dir)
     plot_ndvi(ndvi_2, "NDVI - Recife - August 2022", "ndvi_october.png", output_dir)
     plot_ndvi(delta_ndvi, "ΔNDVI (August - April)", "delta_ndvi.png", output_dir, midpoint=0)
 
    
-    # Histogramas
+    # Histograms
     
     plot_histogram(ndvi_1, "Histogram NDVI - March", "hist_ndvi_march.png", output_dir)
     plot_histogram(ndvi_2, "Histogram NDVI - October", "hist_ndvi_october.png", output_dir)
@@ -99,20 +99,20 @@ def main():
 
    
     
-    # Classificação e filtro mediano do ΔNDVI
+    # ΔNDVI classification and median filtering
     
 
-    # Calcula bins automaticamente com base nos valores do delta
+    # Automatically calculates bins based on delta values
     delta_min, delta_max = np.nanmin(delta_ndvi), np.nanmax(delta_ndvi)
     bins = np.linspace(delta_min, delta_max, 6)  # 5 classes uniformes
 
     classified = classify_ndvi(delta_ndvi, bins)
     smoothed = smooth_classification(classified)
 
-    # Ajusta o midpoint para o centro do delta real
+    # Adjusts the midpoint to the center of the actual delta range
     mid_val = (delta_min + delta_max) / 2
 
-    # Informações rápidas
+    # Quick Info
     print("NDVI March Min/Max:", np.nanmin(ndvi_1), np.nanmax(ndvi_1))
     print("NDVI October Min/Max:", np.nanmin(ndvi_2), np.nanmax(ndvi_2))
     print("ΔNDVI Min/Max:", np.nanmin(delta_ndvi), np.nanmax(delta_ndvi))
