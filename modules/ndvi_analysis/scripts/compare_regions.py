@@ -44,8 +44,8 @@ def compare_classes(areas1, areas2, label1, label2):
 
     for classe in areas1.keys():
 
-        p1 = areas1[classe]["porcentagem"]
-        p2 = areas2[classe]["porcentagem"]
+        p1 = areas1[classe]["percentage"]
+        p2 = areas2[classe]["percentage"]
 
         diff = p1 - p2
 
@@ -56,8 +56,8 @@ def plot_class_comparison(areas1, areas2, label1, label2, output_dir):
 
     classes = list(areas1.keys())
 
-    vals1 = [areas1[c]["porcentagem"] for c in classes]
-    vals2 = [areas2[c]["porcentagem"] for c in classes]
+    vals1 = [areas1[c]["percentage"] for c in classes]
+    vals2 = [areas2[c]["percentage"] for c in classes]
 
     x = np.arange(len(classes))
     width = 0.35
