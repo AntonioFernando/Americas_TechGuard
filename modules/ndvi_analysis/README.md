@@ -171,10 +171,6 @@ $$
 R = (R_{\max} - \alpha \cdot NDVI) \cdot (1 - \beta \cdot P_s)
 $$
 
-$$
-R = (R_{\max} - \alpha \cdot NDVI) \cdot (1 - \beta \cdot P_s)
-$$
-
 Where:
 
 - $$R$$ is the estimated runoff-related indicator.
