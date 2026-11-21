@@ -186,7 +186,7 @@ The model is applied to both study areas using common baseline assumptions and a
 
 Three parameter configurations are considered:
 
-| Scenario | \(R_{\max}\) | \(\alpha\) | \(\beta\) |
+| Scenario | $$R_{\max}$$ | $$\alpha$$ | $$\beta$$ |
 |---|---:|---:|---:|
 | Low | 0.8 | 0.4 | 0.3 |
 | Base | 0.9 | 0.6 | 0.5 |
