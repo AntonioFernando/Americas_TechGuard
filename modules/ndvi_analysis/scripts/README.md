@@ -168,9 +168,9 @@ This script evaluates the relationship between NDVI, a normalized soil permeabil
 
 The model is defined as:
 
-\[
+$$
 R = (R_{\max} - \alpha \cdot NDVI) \cdot (1 - \beta \cdot P_s)
-\]
+$$
 
 Where:
 
@@ -426,7 +426,7 @@ The main raster datasets used in the comparative research include:
 
 The research raster datasets and supporting materials are available through the associated Zenodo record:
 
-https://doi.org/10.5281/zenodo.24237499
+https://doi.org/10.5281/zenodo.24412207
 
 The acquisition dates, spatial reference systems, raster dimensions, and other technical properties should be verified from the corresponding GeoTIFF metadata.
 
@@ -459,7 +459,7 @@ For additional information, consult:
 - [`../README.md`](../README.md) – Main repository documentation.
 - [`../gee/README.md`](../gee/README.md) – Google Earth Engine scripts and satellite data acquisition.
 - [Americas TechGuard GitHub repository](https://github.com/AntonioFernando/Americas_TechGuard)
-- [Research dataset on Zenodo](https://doi.org/10.5281/zenodo.24237499)
+- [Research dataset on Zenodo](https://doi.org/10.5281/zenodo.24412207)
 
 ---
 
