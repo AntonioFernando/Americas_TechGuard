@@ -171,14 +171,18 @@ $$
 R = (R_{\max} - \alpha \cdot NDVI) \cdot (1 - \beta \cdot P_s)
 $$
 
+$$
+R = (R_{\max} - \alpha \cdot NDVI) \cdot (1 - \beta \cdot P_s)
+$$
+
 Where:
 
-- \(R\) is the estimated runoff-related indicator.
-- \(R_{\max}\) is the maximum reference runoff parameter.
-- \(NDVI\) is the mean vegetation index.
-- \(\alpha\) is the NDVI influence parameter.
-- \(\beta\) is the soil-related influence parameter.
-- \(P_s\) is the normalized soil permeability proxy.
+- $$R$$ is the estimated runoff-related indicator.
+- $$R_{\max}$$ is the maximum reference runoff parameter.
+- $$NDVI$$ is the mean vegetation index.
+- $$\alpha$$ is the NDVI influence parameter.
+- $$\beta$$ is the soil-related influence parameter.
+- $$P_s$$ is the normalized soil permeability proxy.
 
 The model is applied to both study areas using common baseline assumptions and alternative parameter configurations.
 
