@@ -51,7 +51,7 @@ Map.addLayer(bandas4e8, {bands: ['B4', 'B8'], min:0, max:3000}, 'B4 e B8');
 
 print (s2);
   // uncoment the block below to generate downloadable Geotiff file
-
+  
   // Export.image.toDrive({
   //   image: imagem
   //             .select(['B8','B4','B3','B2'])

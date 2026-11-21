@@ -18,7 +18,7 @@ The exported GeoTIFF files are subsequently processed by the Python scripts loca
 
 The satellite datasets and associated research materials are publicly available through the project's Zenodo repository:
 
-**Dataset DOI:** [https://doi.org/10.5281/zenodo.24237499](https://doi.org/10.5281/zenodo.24237499)
+**Dataset DOI:** [https://doi.org/10.5281/zenodo.24412207](https://doi.org/10.5281/zenodo.24412207)
 
 ## 2. Directory Contents
 
@@ -252,7 +252,7 @@ Official documentation:
 
 The satellite imagery and associated research materials are publicly available through the project's Zenodo repository:
 
-[https://doi.org/10.5281/zenodo.24237499](https://doi.org/10.5281/zenodo.24237499)
+[https://doi.org/10.5281/zenodo.24412207](https://doi.org/10.5281/zenodo.24412207)
 
 Researchers can download the required GeoTIFF files and execute the Python scripts locally, without accessing the Google Earth Engine Code Editor or performing the original satellite image acquisition again.
 
@@ -297,7 +297,7 @@ For further information, refer to:
 
 ### Research dataset
 
-Souza, A. F. L. M. (2026). *Americas TechGuard – NDVI Analysis Research Dataset*. Zenodo. https://doi.org/10.5281/zenodo.24237499
+Souza, A. F. L. M. (2026). *Americas TechGuard – NDVI Analysis Research Dataset*. Zenodo. [https://doi.org/10.5281/zenodo.24412207](https://doi.org/10.5281/zenodo.24412207)
 
 ### Source code
 

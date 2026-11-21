@@ -38,9 +38,9 @@ The optical imagery was obtained from the **Sentinel-2 Surface Reflectance Harmo
 
 The Normalized Difference Vegetation Index is calculated using the red and near-infrared bands:
 
-\[
+$$
 NDVI = \frac{NIR - Red}{NIR + Red}
-\]
+$$
 
 For Sentinel-2 imagery, the calculation uses:
 
@@ -66,7 +66,6 @@ The repository is organized into separate directories for satellite data process
 
 ```text
 ndvi_analysis/
-│
 │
 ├── gee/
 │   ├── sentinel2_recife.js
@@ -168,9 +167,9 @@ The script `flood_comparison_model.py` implements the empirical model used in th
 
 The model estimates a runoff-related indicator based on NDVI and a soil permeability proxy:
 
-\[
+$$
 R = (R_{\max} - \alpha \cdot NDVI) \cdot (1 - \beta \cdot P_s)
-\]
+$$
 
 Where:
 
@@ -258,7 +257,7 @@ Some scripts contain predefined input paths and study-area configurations. Revie
 
 The satellite datasets and supporting research materials are available through Zenodo:
 
-**DOI:** https://doi.org/10.5281/zenodo.24237499
+**DOI:** [https://doi.org/10.5281/zenodo.24412207](https://doi.org/10.5281/zenodo.24412207)
 
 The dataset provides the raster inputs used in the research. The Python scripts and Google Earth Engine workflows document the processing and analysis procedures.
 
@@ -274,7 +273,7 @@ For reproducibility, users should consider the following:
 ## 11. Related Resources
 
 - **Research repository:** [Americas TechGuard](https://github.com/AntonioFernando/Americas_TechGuard)
-- **Research dataset:** [Zenodo – DOI 10.5281/zenodo.24237499](https://doi.org/10.5281/zenodo.24237499)
+- **Research dataset:** [Zenodo – DOI 10.5281/zenodo.24412207](https://doi.org/10.5281/zenodo.24412207)
 - **Google Earth Engine:** [Official documentation](https://developers.google.com/earth-engine/guides)
 - **Sentinel-2:** [Copernicus Sentinel-2 mission](https://www.esa.int/Applications/Observing_the_Earth/Copernicus/Sentinel-2)
 - **Sentinel-1:** [Copernicus Sentinel-1 mission](https://www.esa.int/Applications/Observing_the_Earth/Copernicus/Sentinel-1)
@@ -285,6 +284,6 @@ For reproducibility, users should consider the following:
 
 If you use the datasets, scripts, or methodological workflow from this repository, please cite the associated research dataset:
 
-Souza, A. F. L. M. (2026). *Americas TechGuard – NDVI Analysis Research Dataset*. Zenodo. https://doi.org/10.5281/zenodo.24237499
+Souza, A. F. L. M. (2026). *Americas TechGuard – NDVI Analysis Research Dataset*. Zenodo. [https://doi.org/10.5281/zenodo.24412207](https://doi.org/10.5281/zenodo.24412207)
 
 Please verify the final bibliographic metadata against the Zenodo record before using this citation in a formal publication.
